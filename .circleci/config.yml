@@ -11,6 +11,7 @@ jobs:
          
 
      # build the application image
+     - run: cd docker
      - run: docker build -t melisa/udacity:capstone  .
 
      # deploy the image
