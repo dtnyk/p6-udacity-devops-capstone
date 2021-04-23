@@ -12,9 +12,9 @@ jobs:
      # build the application image
      - run: |
         cd docker
-        docker build -t melisa/udacity:capstone  .
+        docker build -t melisa87/udacity:capstone  .
 
      # deploy the image
      - run: |
         echo "$DOCKERHUB_PASSWORD" | docker login --username $DOCKERHUB_USERNAME --password-stdin
-        docker push melisa/udacity:capstone
+        docker push melisa87/udacity:capstone
