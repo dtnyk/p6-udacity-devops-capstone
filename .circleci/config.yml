@@ -16,8 +16,3 @@ jobs:
 
      # deploy the image
      - run: docker push melisa/udacity:capstone
-     
- workflows:
-  default:
-    jobs:
-      - build
