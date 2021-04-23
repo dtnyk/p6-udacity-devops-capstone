@@ -1,23 +1,17 @@
-version: 2.1
-
+version: 2
 jobs:
+ build:
+   machine: true
+   steps:
+     - checkout
+     # start proprietary DB using private Docker image
+     # with credentials stored in the UI
+     - run: |
+         echo "$DOCKERHUB_PASSWORD" | docker login --username $DOCKERHUB_USERNAME --password-stdin
+         
 
-  mydocker:
-    #docker:
-      #- image: circleci/python:3.7.3-stretch
-    machine: true   
-    steps:
-      - checkout # Checkout code from git
-      #- setup_remote_docker            
-      - run:
-          name: Build and push Docker image
-          command: |
-            cd docker
-            ls 
-            docker build -t melisa87/udacity:capstone .
-            echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
-            docker push melisa/udacity:capstone        
-workflows:
-  default:
-    jobs:
-      - mydocker
+     # build the application image
+     - run: docker build -t melisa/udacity:capstone  .
+
+     # deploy the image
+     - run: docker push melisa/udacity:capstone
