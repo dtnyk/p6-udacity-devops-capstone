@@ -14,7 +14,9 @@ jobs:
      - run: ls
      - run: cd docker
      - run: ls
-     - run: docker build -t melisa/udacity:capstone  .
+     - run: |
+        cd docker
+        docker build -t melisa/udacity:capstone  .
 
      # deploy the image
      - run: docker push melisa/udacity:capstone
