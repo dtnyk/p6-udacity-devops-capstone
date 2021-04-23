@@ -1,0 +1,22 @@
+version: 2.1
+
+jobs:
+
+  mydocker:
+    docker:
+      - image: circleci/python:3.7.3-stretch
+    steps:
+      - checkout # Checkout code from git
+      - setup_remote_docker            
+      - run:
+          name: Build and push Docker image
+          command: |
+            cd docker
+            ls 
+            docker build -t melisa87/udacity:capstone .
+            echo $DOCKER_PASS | docker login -u $DOCKERHUB_USERNAME --password-stdin
+            docker push melisa/udacity:capstone        
+workflows:
+  default:
+    jobs:
+      - mydocker
