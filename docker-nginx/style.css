@@ -21,3 +21,6 @@ body {
       text-decoration: none;
       color: #F1C863;
   }
+  ul.a {
+    list-style-type: circle;
+  }  
