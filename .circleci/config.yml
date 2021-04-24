@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 jobs:
 
     lint:
@@ -19,11 +19,13 @@ jobs:
             cd docker-nginx/
             make lint
     build:
+        docker:
+            - image: circleci/python:3.7.3-stretch
         machine: true
         steps:
         - checkout
-        - run: |
-            echo "$DOCKERHUB_PASSWORD" | docker login --username $DOCKERHUB_USERNAME --password-stdin
+        #- run: |
+            #echo "$DOCKERHUB_PASSWORD" | docker login --username $DOCKERHUB_USERNAME --password-stdin
          
         #build docker image
         - run: |
