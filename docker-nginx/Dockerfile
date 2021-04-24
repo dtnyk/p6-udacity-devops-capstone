@@ -1,4 +1,4 @@
-FROM nginx:latest
+FROM nginx:stable
 RUN rm /etc/nginx/conf.d/*
-ADD hello.conf /etc/nginx/conf.d/
-ADD index.html /usr/share/nginx/html/
+COPY hello.conf /etc/nginx/conf.d/
+COPY index.html /usr/share/nginx/html/
