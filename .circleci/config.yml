@@ -1,5 +1,23 @@
 version: 2
 jobs:
+
+lint:
+    docker:
+      - image: python:3.7.3-stretch
+    steps:
+      - checkout
+      - run:
+          name: Make install
+          command: |
+            # Your code here
+            cd docker-nginx/
+            make install
+      - run:
+          name: Lint dockerfile and html
+          command: |
+            # Your code here
+            cd docker-nginx/
+            make lint
  build:
    machine: true
    steps:
@@ -11,10 +29,17 @@ jobs:
          
      # build the application image
      - run: |
-        cd docker
+        cd docker-nginx
         docker build -t melisa87/udacity:capstone  .
 
-     # deploy the image
+     # deploy the image to the DockerHub
      - run: |
         echo "$DOCKERHUB_PASSWORD" | docker login --username $DOCKERHUB_USERNAME --password-stdin
         docker push melisa87/udacity:capstone
+
+workflows:
+  capstone:
+    jobs:
+      - lint
+      - build:
+          requires: [lint]
