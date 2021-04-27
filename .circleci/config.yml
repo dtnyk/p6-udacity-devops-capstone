@@ -41,7 +41,7 @@ jobs:
             cd iaac
             aws cloudformation deploy \
               --template-file network.yml \
-              --stack-name capstoneNetwork-${CIRCLE_WORKFLOW_ID} --region=us-east-1 --debug
+              --stack-name capstoneNetwork-${CIRCLE_WORKFLOW_ID} --region=us-east-1
 
 workflows:
   capstone:
