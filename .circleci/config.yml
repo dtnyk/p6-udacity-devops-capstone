@@ -30,7 +30,7 @@ jobs:
           echo "$DOCKERHUB_PASSWORD" | docker login --username $DOCKERHUB_USERNAME --password-stdin
           docker push melisa87/udacity:capstone
 
-   create_infrastructure:
+  create_infrastructure:
     docker:
       - image: amazon/aws-cli
     steps:
