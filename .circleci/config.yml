@@ -30,9 +30,23 @@ jobs:
           echo "$DOCKERHUB_PASSWORD" | docker login --username $DOCKERHUB_USERNAME --password-stdin
           docker push melisa87/udacity:capstone
 
+   create_infrastructure:
+    docker:
+      - image: amazon/aws-cli
+    steps:
+      - checkout
+      - run:
+          name: Ensure network infrastructure exist
+          command: |
+            cd iaac
+            aws cloudformation deploy \
+              --template-file network.yml \
+              --stack-name capstoneNetwork-${CIRCLE_WORKFLOW_ID} --debug
+
 workflows:
   capstone:
     jobs:
       - lint
       - build:
           requires: [lint]
+      - create_infrastructure
