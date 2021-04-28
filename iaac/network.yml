@@ -123,6 +123,17 @@ Resources:
         Properties:
             RouteTableId: !Ref PublicRouteTable
             SubnetId: !Ref PublicSubnet2
+
+    ControlPlaneSecurityGroup:
+        Type: AWS::EC2::SecurityGroup
+        Properties:
+            GroupDescription: Cluster communication with worker nodes
+            VpcId: !Ref VPC
+            SecurityGroupIngress:
+            - IpProtocol: tcp
+            FromPort: 80
+            ToPort: 80
+            CidrIp: 0.0.0.0/0
 Outputs: 
 
     VPC: 
@@ -154,3 +165,9 @@ Outputs:
         Value: !Ref PublicSubnet2
         Export:
           Name: !Sub ${EnvironmentName}-PUB2-SN
+
+    SecurityGroup:
+        Description: Security group for the cluster control plane communication with worker nodes
+        Value: !Ref ControlPlaneSecurityGroup
+        Export:
+          Name: !Sub ${EnvironmentName}-SECG
