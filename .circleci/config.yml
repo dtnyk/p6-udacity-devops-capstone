@@ -2,64 +2,64 @@
 version: 2.1
 
 jobs:
-  lint:
-    docker:
-      - image: python:3.7.3-stretch
-    steps:
-      - checkout
-      - run:
-          name: Make install
-          command: |
+   lint:
+      docker:
+         - image: python:3.7.3-stretch
+      steps:
+         - checkout
+         - run:
+            name: Make install
+            command: |
+               cd docker-nginx
+               make install
+         - run:
+            name: Lint dockerfile and html
+            command: |
+               cd docker-nginx
+               make lint
+   build:
+      machine: true
+      steps:
+         - checkout
+         - run: |
             cd docker-nginx
-            make install
-      - run:
-          name: Lint dockerfile and html
-          command: |
-            cd docker-nginx
-            make lint
-  build:
-    machine: true
-    steps:
-      - checkout
-      - run: |
-          cd docker-nginx
-          docker build -t melisa87/udacity:capstone  .
+            docker build -t melisa87/udacity:capstone  .
 
         # deploy the image to the DockerHub
-      - run: |
-          echo "$DOCKERHUB_PASSWORD" | docker login --username $DOCKERHUB_USERNAME --password-stdin
-          docker push melisa87/udacity:capstone
+         - run: |
+            echo "$DOCKERHUB_PASSWORD" | docker login --username $DOCKERHUB_USERNAME --password-stdin
+            docker push melisa87/udacity:capstone
 
-    create_network:
-    docker:
-      - image: amazon/aws-cli
-    steps:
-      - checkout
-      - run:
-          name: Ensure network infrastructure exist
-          command: |
-            cd iaac
-            aws cloudformation deploy \
-              --template-file network.yml \
-              --tags project=${ENVIRONMENT_NAME}-Project6 \
-              --stack-name capstoneNetwork-${CIRCLE_WORKFLOW_ID}
-              --region ${AWS_DEFAULT_REGION} \
-              --parameter-overrides network-params.json
+   create_network:
+      docker:
+         - image: amazon/aws-cli
+      steps:
+         - checkout
+         - run:
+            name: Ensure network infrastructure exist
+            command: |
+               cd iaac
+               aws cloudformation deploy \
+               --template-file network.yml \
+               --tags project=${ENVIRONMENT_NAME}-Project6 \
+               --stack-name capstoneNetwork-${CIRCLE_WORKFLOW_ID}
+               --region ${AWS_DEFAULT_REGION} \
+               --parameter-overrides network-params.json
 
-    create_cluster:
-    docker:
-      - image: amazon/aws-cli
-    steps:
-      - checkout
-      - run:
-          name: Create Amazon EKS Cluster
-          command: |
-            cd iaac
-            aws cloudformation deploy \
-              --template-file kube-cluster.yml \
-              --tags project=${ENVIRONMENT_NAME}-Project6 \
-              --stack-name capstoneCluster-${CIRCLE_WORKFLOW_ID}
-              --parameter-overrides kube-cluster-params.json
+   create_cluster:
+      docker:
+         - image: amazon/aws-cli
+      steps:
+         - checkout
+         - run:
+            name: Create Amazon EKS Cluster
+            command: |
+               cd iaac
+               aws cloudformation deploy \
+               --template-file kube-cluster.yml \
+               --tags project=${ENVIRONMENT_NAME}-Project6 \
+               --stack-name capstoneCluster-${CIRCLE_WORKFLOW_ID}
+               --parameter-overrides kube-cluster-params.json
 
 workflows:
   capstone:
