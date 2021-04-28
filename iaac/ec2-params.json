@@ -1,0 +1,14 @@
+[
+	{
+		"ParameterKey": "EnvironmentName",
+		"ParameterValue": "ProjectCapstone"
+	},
+	{
+		"ParameterKey": "SSHKeyName",
+		"ParameterValue": "udacity"
+    },
+	{
+		"ParameterKey": "ImageId",
+		"ParameterValue": "ami-02fe94dee086c0c37"
+	}
+]
