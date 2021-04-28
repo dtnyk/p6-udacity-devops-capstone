@@ -43,7 +43,6 @@ jobs:
                --template-file network.yml \
                --tags project=${ENVIRONMENT_NAME}-Project6 \
                --stack-name capstoneNetwork-${CIRCLE_WORKFLOW_ID}
-               --region ${AWS_DEFAULT_REGION} \
                --parameter-overrides network-params.json
 
    create_cluster:
@@ -64,7 +63,7 @@ jobs:
 workflows:
   capstone:
     jobs:
-      - lint
-      - build:
-          requires: [lint]
+      #- lint
+      #- build:
+      #    requires: [lint]
       - create_network
