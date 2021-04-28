@@ -30,7 +30,7 @@ jobs:
           echo "$DOCKERHUB_PASSWORD" | docker login --username $DOCKERHUB_USERNAME --password-stdin
           docker push melisa87/udacity:capstone
 
-  create_network:
+    create_network:
     docker:
       - image: amazon/aws-cli
     steps:
@@ -46,7 +46,7 @@ jobs:
               --region ${AWS_DEFAULT_REGION} \
               --parameter-overrides network-params.json
 
-   create_cluster:
+    create_cluster:
     docker:
       - image: amazon/aws-cli
     steps:
