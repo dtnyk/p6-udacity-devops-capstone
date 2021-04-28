@@ -43,7 +43,7 @@ jobs:
                --template-file network.yml \
                --tags project=${ENVIRONMENT_NAME}-Project6 \
                --stack-name capstoneNetwork-${CIRCLE_WORKFLOW_ID}
-               --parameter-overrides network-params.json
+              
 
    create_cluster:
       docker:
@@ -58,7 +58,7 @@ jobs:
                --template-file kube-cluster.yml \
                --tags project=${ENVIRONMENT_NAME}-Project6 \
                --stack-name capstoneCluster-${CIRCLE_WORKFLOW_ID}
-               --parameter-overrides kube-cluster-params.json
+              
 
 workflows:
   capstone:
@@ -67,3 +67,4 @@ workflows:
       #- build:
       #    requires: [lint]
       - create_network
+      - create_cluster
