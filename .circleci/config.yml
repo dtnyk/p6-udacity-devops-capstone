@@ -93,4 +93,4 @@ workflows:
       #    requires: [lint]
       #- create_network
       #- create_cluster
-      - create nodes
+      - create_nodes
