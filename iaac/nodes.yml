@@ -60,7 +60,7 @@ Resources:
   NodeGroup:
     Type: AWS::EKS::Nodegroup
     Properties:
-      ClusterName: !Sub ${EnvironmentName}-mycluster
+      ClusterName: !Sub ${EnvironmentName}-ekscluster
       NodeRole: !GetAtt NodeInstanceRole.Arn
       NodegroupName: !Sub ${EnvironmentName}-nodegroup
       ScalingConfig:
