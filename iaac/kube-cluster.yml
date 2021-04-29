@@ -69,34 +69,6 @@ Resources:
           FromPort: 22
           ToPort: 22
           CidrIp: 0.0.0.0/0
-
-  ec2Instance1:
-    Type: AWS::EC2::Instance
-    Properties:
-      InstanceType: t2.micro
-      SecurityGroups:
-        - Ref: InstanceSecurityGroup
-      KeyName: !Ref SSHKeyName
-      ImageId: !Ref ImageId
-      Tags:
-        - Key: Name
-          Value: !Sub ${EnvironmentName}-ec2-instance1
-        - Key: Project
-          Value: !Ref EnvironmentName
-
-  ec2Instance2:
-    Type: AWS::EC2::Instance
-    Properties:
-      InstanceType: t2.micro
-      SecurityGroups:
-        - Ref: InstanceSecurityGroup
-      KeyName: !Ref SSHKeyName
-      ImageId: !Ref ImageId
-      Tags:
-        - Key: Name
-          Value: !Sub ${EnvironmentName}-ec2-instance2
-        - Key: Project
-          Value: !Ref EnvironmentName
 Outputs:
   EksId:
     Description: EKS id
