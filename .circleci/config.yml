@@ -58,7 +58,7 @@ jobs:
                --template-file kube-cluster.yml \
                --tags project=${ENVIRONMENT_NAME}-Project6 \
                --stack-name capstoneCluster-${CIRCLE_WORKFLOW_ID} \
-               --parameter-overrides file://iaac/kube-cluster-params.json \
+               --parameter-overrides file://kube-cluster-params.json \
                --capabilities CAPABILITY_NAMED_IAM
                
               
