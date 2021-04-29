@@ -42,7 +42,8 @@ jobs:
                aws cloudformation deploy \
                --template-file network.yml \
                --tags project=${ENVIRONMENT_NAME}-Project6 \
-               --stack-name capstoneNetwork-${CIRCLE_WORKFLOW_ID}
+               --stack-name capstoneNetwork-${CIRCLE_WORKFLOW_ID} \
+               --parameter-overrides file://network-params.json
               
 
    create_cluster:
@@ -57,9 +58,30 @@ jobs:
                aws cloudformation deploy \
                --template-file kube-cluster.yml \
                --tags project=${ENVIRONMENT_NAME}-Project6 \
-               --stack-name capstoneCluster-${CIRCLE_WORKFLOW_ID} \
+               --stack-name capstoneEKSCluster-${CIRCLE_WORKFLOW_ID} \
                --parameter-overrides file://kube-cluster-params.json \
                --capabilities CAPABILITY_NAMED_IAM
+            no_output_timeout: 15m
+
+   create_nodes:
+      docker:
+         - image: amazon/aws-cli
+      steps:
+         - checkout
+         - run:
+            name: Attach nodes to the Amazon EKS Cluster
+            command: |
+               cd iaac
+               aws cloudformation deploy \
+               --template-file nodes.yml \
+               --tags project=${ENVIRONMENT_NAME}-Project6 \
+               --stack-name capstoneEKSNodes-${CIRCLE_WORKFLOW_ID} \
+               --parameter-overrides file://nodes-params.json \
+               --capabilities CAPABILITY_NAMED_IAM
+            # fix Too long with no output
+            no_output_timeout: 15m
+
+   
                
               
 
@@ -70,4 +92,5 @@ workflows:
       #- build:
       #    requires: [lint]
       #- create_network
-      - create_cluster
+      #- create_cluster
+      - create nodes
