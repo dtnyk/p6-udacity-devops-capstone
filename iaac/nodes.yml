@@ -1,6 +1,6 @@
 
 Description:
-  Capstone Project6 / Creates the nodegroup for the Amazon EKS Cluster
+  Melisa Bekan Capstone Project6 / Creates the nodegroup for the Amazon EKS Cluster
 Parameters:
   EnvironmentName:
     Description: An Environment name that will be prefixed to resources

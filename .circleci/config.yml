@@ -24,7 +24,6 @@ jobs:
          - run: |
             cd docker-nginx
             docker build -t melisa87/udacity:capstone  .
-
         # deploy the image to the DockerHub
          - run: |
             echo "$DOCKERHUB_PASSWORD" | docker login --username $DOCKERHUB_USERNAME --password-stdin
@@ -45,7 +44,6 @@ jobs:
                --stack-name capstoneNetwork-${CIRCLE_WORKFLOW_ID} \
                --parameter-overrides file://network-params.json
               
-
    create_cluster:
       docker:
          - image: amazon/aws-cli
@@ -81,9 +79,20 @@ jobs:
             # fix Too long with no output
             no_output_timeout: 15m
 
-   
-               
-              
+   create_ec2s:
+      docker:
+         - image: amazon/aws-cli
+      steps:
+         - checkout
+         - run:
+            name: Create EC2 instances
+            command: |
+               cd iaac
+               aws cloudformation deploy \
+               --template-file ec2.yml \
+               --tags project=${ENVIRONMENT_NAME}-Project6 \
+               --stack-name capstoneEC2-${CIRCLE_WORKFLOW_ID} \
+               --parameter-overrides file://ec2-params.json
 
 workflows:
   capstone:
@@ -91,6 +100,10 @@ workflows:
       #- lint
       #- build:
       #    requires: [lint]
-      #- create_network
-      #- create_cluster
-      - create_nodes
+      - create_network
+      - create_cluster:
+            requires: [create_network]
+      - create_nodes:
+            requires: [create_cluster]
+      - create_ec2s:
+            requires: [create_nodes]
