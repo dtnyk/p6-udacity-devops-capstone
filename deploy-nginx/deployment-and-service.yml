@@ -21,7 +21,7 @@ metadata:
     app: capstone-nginx
   namespace: default
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: capstone-nginx
