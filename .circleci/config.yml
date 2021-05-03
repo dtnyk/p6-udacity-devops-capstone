@@ -100,11 +100,11 @@ workflows:
       - lint
       - build:
             requires: [lint]
-      #- create_network:
-            #requires: [build]
-      #- create_cluster:
-            #requires: [create_network]
-      #- create_nodes:
-            #requires: [create_cluster]
-      #- create_ec2s:
-            #requires: [create_nodes]
+      - create_network:
+            requires: [build]
+      - create_cluster:
+            requires: [create_network]
+      - create_nodes:
+            requires: [create_cluster]
+      - create_ec2s:
+            requires: [create_nodes]
