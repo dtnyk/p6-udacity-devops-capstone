@@ -113,7 +113,7 @@ jobs:
       - kubernetes/create-or-update-resource:
           get-rollout-status: true
           resource-file-path: /home/circleci/project/.circleci/deployment-and-service.yml
-          resource-name: deployment/nginx-deployment
+          resource-name: deployment/capstone-nginx
 
 workflows:
   capstone:
