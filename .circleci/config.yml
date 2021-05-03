@@ -131,9 +131,11 @@ jobs:
           command: |
             kubectl get svc
             kubectl get pods
+            kubectl describe pods
             kubectl get nodes
             kubectl get deployment
-            kubectl describe capstone-nginx
+            kubectl describe service capstone-nginx
+            kubectl get services -o wide
 
 workflows:
   capstone:
