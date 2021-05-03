@@ -112,7 +112,7 @@ jobs:
           install-kubectl: true
       - kubernetes/create-or-update-resource:
           get-rollout-status: true
-          resource-file-path: deploy-nginx/deployment-and-service.yaml
+          resource-file-path: deployment-and-service.yml
           resource-name: deployment/nginx-deployment
 
 workflows:
