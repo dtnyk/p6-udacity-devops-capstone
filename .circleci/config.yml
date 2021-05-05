@@ -137,23 +137,40 @@ jobs:
             kubectl describe service capstone-nginx
             kubectl get services -o wide
 
+   update_deployment:
+    executor: aws-eks/python3
+    parameters:
+      cluster-name:
+        description: |
+          Name of the EKS cluster
+        type: string
+    steps:
+      - checkout
+      - aws-eks/update-kubeconfig-with-authenticator:
+          cluster-name: << parameters.cluster-name >>
+          install-kubectl: true
+      - kubernetes/create-or-update-resource:
+          get-rollout-status: true
+          resource-file-path: /home/circleci/project/.circleci/deployment-and-service.yml
+          resource-name: deployment/capstone-nginx
+
 workflows:
   capstone:
     jobs:
-      #- lint
-      #- build:
-            #requires: [lint]
-      #- create_network:
-            #requires: [build]
-      #- create_cluster:
-            #requires: [create_network]
-      #- create_nodes:
-            #requires: [create_cluster]
-      #- create_ec2s:
-            #requires: [create_nodes]
-      #- create_deployment:
-            #cluster-name: ProjectCapstone-ekscluster
-            #requires: [create_ec2s]
+      - lint
+      - build:
+            requires: [lint]
+      - create_network:
+            requires: [build]
+      - create_cluster:
+            requires: [create_network]
+      - create_nodes:
+            requires: [create_cluster]
+      - create_ec2s:
+            requires: [create_nodes]
+      - create_deployment:
+            cluster-name: ProjectCapstone-ekscluster
+            requires: [create_ec2s]
       - create_test:
             cluster-name: ProjectCapstone-ekscluster
-            #requires: [create_ec2s]
+            requires: [create_ec2s]
