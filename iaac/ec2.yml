@@ -23,6 +23,7 @@ Resources:
     Properties:
       GroupName: !Sub ${EnvironmentName}-ec2-SecG
       GroupDescription: Allow port 22 for management
+      #VpcId: !Ref VPC
       SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: 22
