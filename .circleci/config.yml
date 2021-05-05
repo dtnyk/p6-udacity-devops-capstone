@@ -32,7 +32,6 @@ jobs:
          - run: |
             echo "$DOCKERHUB_PASSWORD" | docker login --username $DOCKERHUB_USERNAME --password-stdin
             docker push melisa87/udacity:capstone
-
    create_network:
       docker:
          - image: amazon/aws-cli
@@ -97,7 +96,7 @@ jobs:
                --tags project=${ENVIRONMENT_NAME}-Project6 \
                --stack-name capstoneEC2Instances-${CIRCLE_WORKFLOW_ID} \
                --parameter-overrides file://ec2-params.json
-
+               
    create_deployment:
     executor: aws-eks/python3
     parameters:
@@ -136,7 +135,6 @@ jobs:
             kubectl get deployment
             kubectl describe service capstone-nginx
             kubectl get services -o wide
-
    update_deployment:
     executor: aws-eks/python3
     parameters:
