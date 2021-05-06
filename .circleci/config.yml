@@ -177,5 +177,4 @@ workflows:
       #- create_test:
             #cluster-name: ProjectCapstone-ekscluster
             #requires: [create_ec2s]
-      - update_deployment:
-         cluster-name: ProjectCapstone-ekscluster
+      - update_deployment
