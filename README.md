@@ -3,6 +3,7 @@ Cloud DevOps Nanodegree program - The final project
 
 ## Table of contents
 * [General info](#general-info)
+* [Folder structure](#folder-structure)
 * [Tools](#technologies)
 * [Usage](#setup)
 * [Result](#result)
@@ -11,7 +12,6 @@ Cloud DevOps Nanodegree program - The final project
 CI/CD pipeline for deploying and linting a microservices application NGINX using Rolling Deployment. Pipeline will containerize application and push the docker image to the Docker Hub.  After that it will create the AWS network infrastructure required to deploy the applicion, AWS EKS Cluster & Nodes and it will deploy application to the EKS Cluster. At the end it will test the cluster and update the cluster with the new image using Rolling Deployment. 
 
 ## Folder structure
-
 * docker-nginx : Source Files
 * iaac : Infrastructure as a code - Deployment Files
 * .circleci : Configuration File for CircleCI & Kubernetes deployment and service files
@@ -57,6 +57,6 @@ containers:
 ## Result 
 
 If you open the URL of your Load Balancer from AWS, you will be able to see deployed application:
-![Link](https://github.com/melisa87/p6-udacity-devops-capstone/blob/main/9_URL.png)
+![Link](https://github.com/melisa87/p6-udacity-devops-capstone/blob/main/LB_URL.png)
 
 
