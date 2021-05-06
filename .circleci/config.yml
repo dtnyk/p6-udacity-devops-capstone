@@ -150,12 +150,12 @@ jobs:
           install-kubectl: true
       - kubernetes/create-or-update-resource:
           get-rollout-status: true
-          resource-file-path: /home/circleci/project/.circleci/deployment-and-service.yml
+          resource-file-path: /home/circleci/project/.circleci/deployment-and-service2.yml
           resource-name: deployment/capstone-nginx
       - run:
          command: |
-            kubectl set image deployment/capstone-nginx melisa87/udacity:capstone=melisa87/udacity:capstone2
             kubectl rollout status deployment capstone-nginx
+            kubectl get deployment capstone-nginx
 
 workflows:
   capstone:
