@@ -175,5 +175,12 @@ workflows:
       - aws-eks/update-container-image:
             cluster-name: ProjectCapstone-ekscluster
             container-image-updates: 'capstone=capstone2'
-            resource-file-path: /home/circleci/project/.circleci/deployment-and-service.yml
-            resource-name: deployment/capstone-nginx
+            post-steps: 
+               - kubernetes/delete-resource:
+                  resource-names: nginx-deployment
+                  resource-types: deployment
+                  wait: true
+            record: true
+            requires:
+               #- create-deployment
+               resource-name: deployment/nginx-deployment
