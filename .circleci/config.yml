@@ -154,8 +154,8 @@ jobs:
           resource-name: deployment/capstone-nginx
       - run:
          command: |
-         kubectl set image deployment/capstone-nginx capstone=melisa87/udacity:capstone2
-         kubectl rollout status deployment capstone-nginx
+            kubectl set image deployment/capstone-nginx capstone=melisa87/udacity:capstone2
+            kubectl rollout status deployment capstone-nginx
 
 workflows:
   capstone:
