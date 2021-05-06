@@ -135,6 +135,7 @@ jobs:
             kubectl get deployment
             kubectl describe service capstone-nginx
             kubectl get services -o wide
+
    update_deployment:
     executor: aws-eks/python3
     parameters:
@@ -151,6 +152,10 @@ jobs:
           get-rollout-status: true
           resource-file-path: /home/circleci/project/.circleci/deployment-and-service.yml
           resource-name: deployment/capstone-nginx
+      - run:
+         command: |
+         kubectl set image deployment/capstone-nginx capstone=melisa87/udacity:capstone2
+         kubectl rollout status deployment capstone-nginx
 
 workflows:
   capstone:
@@ -172,15 +177,4 @@ workflows:
       #- create_test:
             #cluster-name: ProjectCapstone-ekscluster
             #requires: [create_ec2s]
-      - aws-eks/update-container-image:
-            cluster-name: ProjectCapstone-ekscluster
-            container-image-updates: 'capstone=capstone2'
-            post-steps: 
-               - kubernetes/delete-resource:
-                  resource-names: nginx-deployment
-                  resource-types: deployment
-                  wait: true
-            record: true
-            requires:
-               #- create-deployment
-               resource-name: deployment/nginx-deployment
+      - update_deployment
