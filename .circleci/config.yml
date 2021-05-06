@@ -175,3 +175,5 @@ workflows:
       - aws-eks/update-container-image:
             cluster-name: ProjectCapstone-ekscluster
             container-image-updates: 'capstone=capstone2'
+            resource-file-path: /home/circleci/project/.circleci/deployment-and-service.yml
+            resource-name: deployment/capstone-nginx
