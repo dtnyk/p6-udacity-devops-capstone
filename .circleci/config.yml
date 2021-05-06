@@ -150,7 +150,7 @@ jobs:
           install-kubectl: true
       - kubernetes/create-or-update-resource:
           get-rollout-status: true
-          resource-file-path: /home/circleci/project/.circleci/deployment-and-service2.yml
+          resource-file-path: /home/circleci/project/.circleci/deployment-and-servicev2.yml
           resource-name: deployment/capstone-nginx
       - run:
          command: |
