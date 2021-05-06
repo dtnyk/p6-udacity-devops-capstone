@@ -9,6 +9,12 @@ Cloud DevOps Nanodegree program - The final project
 
 ## General info
 CI/CD pipeline for deploying and linting a microservices application NGINX using Rolling Deployment. Pipeline will containerize application and push the docker image to the Docker Hub.  After that it will create the AWS network infrastructure required to deploy the applicion, AWS EKS Cluster & Nodes and it will deploy application to the EKS Cluster. At the end it will test the cluster and update the cluster with the new image using Rolling Deployment. 
+
+## Folder structure
+
+* docker-nginx : Source Files
+* iaac : Infrastructure as a code - Deployment Files
+* .circleci : Configuration File for CircleCI & Kubernetes deployment and service files
 	
 ## Tools
 Project is created with:
