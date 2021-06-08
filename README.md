@@ -1,5 +1,5 @@
 # p6-udacity-devops-capstone
-Cloud DevOps Nanodegree program - The final project
+Cloud DevOps Nanodegree program - The final project P6
 
 ## Table of contents
 * [General info](#general-info)
@@ -26,7 +26,7 @@ Project is created with:
 * Docker Hub
 * GitHub
 	
-## Setup
+## Usage
 To run this project in CircleCI, you have to:
 
 * Fork the project to your Github Account
