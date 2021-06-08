@@ -1,5 +1,5 @@
 # p6-udacity-devops-capstone
-Cloud DevOps Nanodegree program - The final project P6
+Cloud DevOps Nanodegree program - The final CAPSTONE project
 
 ## Table of contents
 * [General info](#general-info)
