@@ -30,7 +30,7 @@ jobs:
             docker build -t dtbnpp/capstone-project:capstone  .
         # deploy the image to the DockerHub
          - run: |
-            echo "$DOCKERHUB_PASSWORD" | docker login --username $DOCKERHUB_USERNAME --password-stdin
+            echo "$DOCKERHUB_PASSWORD" | docker login --username "$DOCKERHUB_USERNAME" --password-stdin
             docker push dtbnpp/capstone-project:capstone
    create_network:
       docker:
