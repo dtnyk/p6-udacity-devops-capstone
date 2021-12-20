@@ -31,7 +31,7 @@ spec:
         app: capstone-nginx
     spec:
       containers:
-        - image: melisa87/udacity:capstone2
+        - image: dtbnpp/capstone-project:capstone2
           imagePullPolicy: Always
           name: capstone-nginx
           ports:

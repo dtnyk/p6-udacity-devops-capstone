@@ -27,11 +27,11 @@ jobs:
          - checkout
          - run: |
             cd docker-nginx
-            docker build -t melisa87/udacity:capstone  .
+            docker build -t dtbnpp/capstone-project:capstone  .
         # deploy the image to the DockerHub
          - run: |
             echo "$DOCKERHUB_PASSWORD" | docker login --username $DOCKERHUB_USERNAME --password-stdin
-            docker push melisa87/udacity:capstone
+            docker push dtbnpp/capstone-project:capstone
    create_network:
       docker:
          - image: amazon/aws-cli
