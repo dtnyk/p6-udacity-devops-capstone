@@ -168,7 +168,7 @@ workflows:
       - build:
             requires: [lint]
       #- create_network:
-            requires: [build]
+      #      requires: [build]
       - create_cluster:
             requires: [create_network]
       - create_nodes:
