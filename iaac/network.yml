@@ -142,23 +142,23 @@ Outputs:
         #Export:
           #Name: !Sub ${EnvironmentName}-VPCID
 
-    VPCPublicRouteTable:
-        Description: Public Routing
-        Value: !Ref PublicRouteTable
-        Export:
-          Name: !Sub ${EnvironmentName}-PUB-RT
+    #VPCPublicRouteTable:
+        #Description: Public Routing
+        #Value: !Ref PublicRouteTable
+        #Export:
+          #Name: !Sub ${EnvironmentName}-PUB-RT
 
-    PublicSubnets:
-        Description: A list of the public subnets
-        Value: !Join [ ",", [ !Ref PublicSubnet1, !Ref PublicSubnet2 ]]
-        Export:
-          Name: !Sub ${EnvironmentName}-PUB-NETS
+    #PublicSubnets:
+        #Description: A list of the public subnets
+        #Value: !Join [ ",", [ !Ref PublicSubnet1, !Ref PublicSubnet2 ]]
+        #Export:
+          #Name: !Sub ${EnvironmentName}-PUB-NETS
 
-    PublicSubnet1:
-        Description: A reference to the public subnet in the 1st Availability Zone
-        Value: !Ref PublicSubnet1
-        Export:
-          Name: !Sub ${EnvironmentName}-PUB1-SN
+    #PublicSubnet1:
+        #Description: A reference to the public subnet in the 1st Availability Zone
+        #Value: !Ref PublicSubnet1
+        #Export:
+          #Name: !Sub ${EnvironmentName}-PUB1-SN
 
     #PublicSubnet2: 
         #Description: A reference to the public subnet in the 2nd Availability Zone
@@ -166,8 +166,8 @@ Outputs:
         #Export:
           #Name: !Sub ${EnvironmentName}-PUB2-SN
 
-    SecurityGroup:
-        Description: Security group for the cluster control plane communication with worker nodes
-        Value: !Ref ControlPlaneSecurityGroup
-        Export:
-          Name: !Sub ${EnvironmentName}-SECG
+    #SecurityGroup:
+        #Description: Security group for the cluster control plane communication with worker nodes
+        #Value: !Ref ControlPlaneSecurityGroup
+        #Export:
+          #Name: !Sub ${EnvironmentName}-SECG
