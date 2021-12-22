@@ -9,32 +9,32 @@ Parameters:
     Type: String
 
 Resources:
-  #ClusterInstanceProfile:
-    #Type: AWS::IAM::InstanceProfile
-    #Properties:
-      #InstanceProfileName: !Sub ${EnvironmentName}-cluster-iamprofile
-      #Path: "/"
-      #Roles:
-        #- !Ref EKSClusterRole
+  ClusterInstanceProfile:
+    Type: AWS::IAM::InstanceProfile
+    Properties:
+      InstanceProfileName: !Sub ${EnvironmentName}-cluster-iamprofile
+      Path: "/"
+      Roles:
+        - !Ref EKSClusterRole
 
-  #EKSClusterRole:
-    #Type: AWS::IAM::Role
-    #Properties:
-      #RoleName: !Sub ${EnvironmentName}-cluster-iamrole
-      #AssumeRolePolicyDocument:
-        #Version: "2012-10-17"
-        #Statement:
-          #- Effect: Allow
-            #Principal:
-              #Service:
-                #- eks.amazonaws.com
-            #Action:
-              #- sts:AssumeRole
-      #Path: "/"
-      #ManagedPolicyArns:
-        #- arn:aws:iam::aws:policy/AmazonEKSClusterPolicy
-        #- arn:aws:iam::aws:policy/AmazonEKSServicePolicy
-        #- arn:aws:iam::aws:policy/ElasticLoadBalancingFullAccess
+  EKSClusterRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub ${EnvironmentName}-cluster-iamrole
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - eks.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      Path: "/"
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonEKSClusterPolicy
+        - arn:aws:iam::aws:policy/AmazonEKSServicePolicy
+        - arn:aws:iam::aws:policy/ElasticLoadBalancingFullAccess
 
   CapstoneCluster:
     Type: AWS::EKS::Cluster
