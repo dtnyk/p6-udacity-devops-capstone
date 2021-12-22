@@ -136,11 +136,11 @@ Resources:
               CidrIp: 0.0.0.0/0
 Outputs: 
 
-    VPC: 
-        Description: A reference to the created VPC
-        Value: !Ref VPC
-        Export:
-          Name: !Sub ${EnvironmentName}-VPCID
+    #VPC: 
+        #Description: A reference to the created VPC
+        #Value: !Ref VPC
+        #Export:
+          #Name: !Sub ${EnvironmentName}-VPCID
 
     VPCPublicRouteTable:
         Description: Public Routing
