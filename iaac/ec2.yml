@@ -1,11 +1,11 @@
 Description: >
-  Melisa Bekan Capstone Project6 / Create EC2 Instances
+  DT Capstone Project6 / Create EC2 Instances
   Creates EC2 instances
   
 Parameters:
   EnvironmentName:
     Description: An Environment name that will be prefixed to resources
-    Default: ProjectCapstone
+    Default: ProjectCapstone-DT
     Type: String
   SSHKeyName:
     Description: SSH key for management access

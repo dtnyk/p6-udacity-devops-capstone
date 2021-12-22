@@ -57,6 +57,6 @@ containers:
 ## Result 
 
 If you open the URL of your Load Balancer from AWS, you will be able to see deployed application:
-![Link](https://github.com/melisa87/p6-udacity-devops-capstone/blob/main/LB_URL.png)
+
 
 
