@@ -73,14 +73,14 @@ Resources:
           - Fn::ImportValue:
               Fn::Sub: ${EnvironmentName}-PUB-NETS
 
-Outputs:
-  NodeInstanceRole:
-    Description: The node instance role
-    Value: !GetAtt NodeInstanceRole.Arn
-    Export:
-      Name: !Sub ${EnvironmentName}-IROLE
-  NodeGroup:
-    Description: The node group for EKS
-    Value: !Ref NodeGroup
-    Export:
-      Name: !Sub ${EnvironmentName}-NGROUP
+#Outputs:
+  #NodeInstanceRole:
+    #Description: The node instance role
+    #Value: !GetAtt NodeInstanceRole.Arn
+    #Export:
+      #Name: !Sub ${EnvironmentName}-IROLE
+  #NodeGroup:
+    #Description: The node group for EKS
+    #Value: !Ref NodeGroup
+    #Export:
+      #Name: !Sub ${EnvironmentName}-NGROUP
