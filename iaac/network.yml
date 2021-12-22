@@ -160,11 +160,11 @@ Outputs:
         Export:
           Name: !Sub ${EnvironmentName}-PUB1-SN
 
-    PublicSubnet2: 
-        Description: A reference to the public subnet in the 2nd Availability Zone
-        Value: !Ref PublicSubnet2
-        Export:
-          Name: !Sub ${EnvironmentName}-PUB2-SN
+    #PublicSubnet2: 
+        #Description: A reference to the public subnet in the 2nd Availability Zone
+        #Value: !Ref PublicSubnet2
+        #Export:
+          #Name: !Sub ${EnvironmentName}-PUB2-SN
 
     SecurityGroup:
         Description: Security group for the cluster control plane communication with worker nodes
