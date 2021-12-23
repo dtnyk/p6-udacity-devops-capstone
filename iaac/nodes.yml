@@ -4,7 +4,7 @@ Description:
 Parameters:
   EnvironmentName:
     Description: An Environment name that will be prefixed to resources
-    Default: ProjectCapstone-DT
+    Default: ProjectCapstone
     Type: String
 
   MinSize:

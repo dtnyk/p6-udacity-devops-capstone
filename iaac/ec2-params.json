@@ -1,7 +1,7 @@
 [
 	{
 		"ParameterKey": "EnvironmentName",
-		"ParameterValue": "ProjectCapstone-DT"
+		"ParameterValue": "ProjectCapstone"
 	},
 	{
 		"ParameterKey": "SSHKeyName",
