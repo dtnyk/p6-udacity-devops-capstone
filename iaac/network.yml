@@ -166,8 +166,8 @@ Outputs:
         #Export:
           #Name: !Sub ${EnvironmentName}-PUB2-SN
 
-    SecurityGroup:
-        Description: Security group for the cluster control plane communication with worker nodes
-        Value: !Ref ControlPlaneSecurityGroup
-        Export:
-          Name: !Sub ${EnvironmentName}-SECG
+    #SecurityGroup:
+        #Description: Security group for the cluster control plane communication with worker nodes
+        #Value: !Ref ControlPlaneSecurityGroup
+        #Export:
+          #Name: !Sub ${EnvironmentName}-SECG
