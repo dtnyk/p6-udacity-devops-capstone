@@ -39,15 +39,15 @@ To run this project in CircleCI, you have to:
 * Change the build job from config.yml in order to include your DockerHub credentials, for example :
 
 ```
-docker build -t melisa87/udacity:capstone  .
-docker push melisa87/udacity:capstone
+docker build -t dtbnpp/capstone-project  .
+docker push dtbnpp/capstone-project
 
 ```
 * Change the scripts deployment-and-service.yml and deployment-and-servicev2.yml (for Rolling Update) with the name of your image from the Docker Hub, for example:
 
 ```
 containers:
-        - image: melisa87/udacity:capstone2
+        - image: dtbnpp/capstone-project
           imagePullPolicy: Always
           name: capstone-nginx
           ports:
@@ -56,7 +56,8 @@ containers:
 
 ## Result 
 
-If you open the URL of your Load Balancer from AWS, you will be able to see deployed application:
+LoadBalancer URL
+http://aed592bd62db34dde95afda0e4504b71-2027743996.us-east-1.elb.amazonaws.com 
 
 
 
