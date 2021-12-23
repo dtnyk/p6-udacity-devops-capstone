@@ -167,19 +167,19 @@ workflows:
       - lint
       - build:
             requires: [lint]
-      - create_network:
-            requires: [build]
-      - create_cluster:
-            requires: [create_network]
-      - create_nodes:
-            requires: [create_cluster]
-      - create_ec2s:
-            requires: [create_nodes]
-      - create_deployment:
-            cluster-name: ProjectCapstone-ekscluster
-            requires: [create_ec2s]
-      - create_test:
-            cluster-name: ProjectCapstone-ekscluster
-            requires: [create_ec2s]
+      #- create_network:
+            #requires: [build]
+      #- create_cluster:
+            #requires: [create_network]
+      #- create_nodes:
+            #requires: [create_cluster]
+      #- create_ec2s:
+            #requires: [create_nodes]
+      #- create_deployment:
+            #cluster-name: ProjectCapstone-ekscluster
+            #requires: [create_ec2s]
+      #- create_test:
+            #cluster-name: ProjectCapstone-ekscluster
+            #requires: [create_ec2s]
       #- update_deployment:
          #cluster-name: ProjectCapstone-ekscluster
