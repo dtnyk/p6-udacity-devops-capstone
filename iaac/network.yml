@@ -134,7 +134,7 @@ Resources:
               FromPort: 80
               ToPort: 80
               CidrIp: 0.0.0.0/0
-Outputs: 
+#Outputs: 
 
     #VPC: 
         #Description: A reference to the created VPC
